@@ -40,7 +40,7 @@
             </div>
               <div>
               <label class="text-gray-800 text-sm mb-2 block">Phone Number</label>
-              <input name="number" type="number"  class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your Phone Number" v-model.trim="Phone" />
+              <input name="number" type="text"  class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your Phone Number" v-model.trim="Phone" />
             </div>
             <div>
               <label class="text-gray-800 text-sm mb-2 block">Password</label>

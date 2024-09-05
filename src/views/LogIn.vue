@@ -1,8 +1,8 @@
 <template>
   <div class="bg-[url('../images/airplane.jpg')] bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen p-4" >
-    <div class=" mr-52 bg-white shadow-lg rounded-lg overflow-hidden max-w-2xl w-full md:w-1/2 lg:w-1/2">
-      <div class="grid md:grid-cols-3">
-        <!-- Left side (Optional) -->
+    <div class=" mr-52 bg-white shadow-lg rounded-lg overflow-hidden max-w-2xl w-full md:w-2/3 lg:w-2/3 min-[641px]:mr-3.5">
+      <div class="grid md:grid-cols-3 ">
+        <!-- Left side -->
         <div class=" md:block bg-gradient-to-r from-blue-800 to-blue-400 text-white flex flex-col justify-center px-6 py-4">
           <h4 class="text-lg font-semibold">Enter Your Account</h4>
           <p class="mt-3 text-sm">Welcome to our sign-in page! Get started by entering your account.</p>
@@ -52,7 +52,7 @@ const validateForm = () => {
      return false;
   } 
   else if (!/\S+@\S+\.\S+/.test(email.value)) {
-    errors.value = 'Email must be valid.';
+    errors.value = 'Email must be xxx@gmail.com';
       return false;
   }
 
