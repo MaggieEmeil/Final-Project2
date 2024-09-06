@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-[url('../images/airplane.jpg')] bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen p-4" >
-    <div class=" mr-52 bg-white shadow-lg rounded-lg overflow-hidden max-w-2xl w-full md:w-2/3 lg:w-2/3 min-[641px]:mr-3.5">
+  <div class="bg-gradient-to-r from-sky-200 to-sky-700 bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen p-4" >
+    <div class=" mr-52 bg-white shadow-lg rounded-lg overflow-hidden   md:w-2/3 lg:w-2/3 xl:w-2/3 min-[641px]:mr-3.5">
       <div class="grid md:grid-cols-3 ">
         <!-- Left side -->
         <div class=" md:block bg-gradient-to-r from-blue-800 to-blue-400 text-white flex flex-col justify-center px-6 py-4">
