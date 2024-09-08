@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gradient-to-r from-sky-200 to-sky-700 bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen p-4" >
-    <div class=" mr-52 bg-white shadow-lg rounded-lg overflow-hidden   md:w-2/3 lg:w-2/3 xl:w-2/3 min-[641px]:mr-3.5">
+    <div class=" mr-52  bg-gradient-to-r from-yellow-100 to-yellow-50 shadow-lg rounded-lg overflow-hidden   md:w-2/3 lg:w-2/3 xl:w-2/3 min-[641px]:mr-3.5">
       <div class="grid md:grid-cols-3 ">
         <!-- Left side -->
         <div class=" md:block bg-gradient-to-r from-blue-800 to-blue-400 text-white flex flex-col justify-center px-6 py-4">
@@ -16,11 +16,11 @@
           <div class="space-y-6">
             <div>
               <label class="text-gray-800 text-sm mb-2 block">Email Id</label>
-              <input name="email" type="text" class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" v-model.trim="email" />
+              <input name="email" type="text" class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" v-model.trim="result.email" />
             </div>
             <div>
               <label class="text-gray-800 text-sm mb-2 block">Password</label>
-              <input name="password" type="password"  class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter password" v-model="password" />
+              <input name="password" type="password"  class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter password" v-model="result.password" />
             </div>
               <span v-if="errors" class="text-red-500 text-sm">{{ errors }}</span>
           </div>
@@ -39,28 +39,28 @@
 <script setup>
 import { ref } from 'vue';
 import {useRouter} from 'vue-router';
-const email = ref('');
-const password = ref('');
 const errors= ref('');
 const router = useRouter();
-
-
+const result=ref({
+  email:'',
+  password:'',
+})
 const validateForm = () => {
 
-  if (!email.value) {
+  if (!result.value.email) {
     errors.value = 'Email is required.';
      return false;
   } 
-  else if (!/\S+@\S+\.\S+/.test(email.value)) {
+  else if (!/\S+@\S+\.\S+/.test(result.value.email)) {
     errors.value = 'Email must be xxx@gmail.com';
       return false;
   }
 
-  else if (!password.value) {
+  else if (!result.value.password) {
     errors.value = 'Password is required.';
      return false;
   }
-  else if (password.value.length < 8) {
+  else if (result.value.password.length < 8) {
     errors.value = 'Password is should be more than 8';
     return false;
   }

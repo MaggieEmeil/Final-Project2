@@ -24,36 +24,36 @@
           <div class="space-y-6">
             <div>
               <label class="text-gray-800 text-sm mb-2 block">First Name</label>
-              <input name="first_name" type="text"  class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your first name" v-model="firstName" />
+              <input name="first_name" type="text"  class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your first name" v-model="result.firstName" />
                         <span v-if="firsterror" class="text-red-500 text-sm">{{ firsterror }}</span>
 
             </div>
             <div>
               <label class="text-gray-800 text-sm mb-2 block">Last Name</label>
-              <input name="last_name" type="text"  class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your last name" v-model="lastName" />
+              <input name="last_name" type="text"  class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your last name" v-model="result.lastName" />
                        <span v-if="lasterror" class="text-red-500 text-sm">{{ lasterror }}</span>
 
             </div>
              <div>
               <label class="text-gray-800 text-sm mb-2 block">User Name</label>
-              <input name="User_name" type="text" class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your username" v-model="UserName" />
+              <input name="User_name" type="text" class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your username" v-model="result.UserName" />
                        <span v-if="usererror" class="text-red-500 text-sm">{{ usererror }}</span>
 
             </div>
             <div>
               <label class="text-gray-800 text-sm mb-2 block">Email Id</label>
-              <input name="email" type="text" class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your email" v-model="email" />
+              <input name="email" type="text" class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your email" v-model="result.email" />
                         <span v-if="emailerror" class="text-red-500 text-sm">{{ emailerror }}</span>
 
             </div>
               <div>
               <label class="text-gray-800 text-sm mb-2 block">Phone Number</label>
-              <input name="number" type="text"  class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your Phone Number" v-model.trim="Phone" />
+              <input name="number" type="text"  class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your Phone Number" v-model.trim="result.Phone" />
                        <span v-if="phoneerror" class="text-red-500 text-sm">{{ phoneerror}}</span>
             </div>
             <div>
               <label class="text-gray-800 text-sm mb-2 block">Password</label>
-              <input name="password" type="password" class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your password" v-model="password" />
+              <input name="password" type="password" class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md focus:outline-blue-500" placeholder="Enter your password" v-model="result.password" />
                         <span v-if="pwerror" class="text-red-500 text-sm">{{ pwerror}}</span>
             </div>
             <div>
@@ -78,12 +78,19 @@
 
 import { ref,watch} from 'vue';
 import {useRouter} from 'vue-router';
-const firstName = ref('');
-const lastName = ref('');
-const UserName = ref('');
-const Phone= ref('');
-const email = ref('');
-const password = ref('');
+const result=ref({firstName:'',
+lastName :'',
+UserName:'',
+Phone:'',
+email:'',
+password:'',
+});
+// const firstName = ref('');
+// const lastName = ref('');
+// const UserName = ref('');
+// const Phone= ref('');
+// const email = ref('');
+// const password = ref('');
 const confirmPassword = ref('');
 const router=useRouter();
 const firsterror= ref('');
@@ -93,37 +100,37 @@ const phoneerror= ref('');
 const emailerror= ref('');
 const pwerror= ref('');
 const confirmerror= ref('');
-watch(()=>password.value,(newPass) =>{ if (newPass.length < 8){  
+watch(()=>result.value.password,(newPass) =>{ if (newPass.length < 8){  
     pwerror.value = 'Password must be at least 8 characters long.';
 }
 else {
     pwerror.value = '';
  } })
-watch(()=>confirmPassword.value, (newConfirm) =>{ if(newConfirm !== password.value){
+watch(()=>confirmPassword.value, (newConfirm) =>{ if(newConfirm !== result.value.password){
   confirmerror.value='Password must be at least 8 characters long.';}
   else{confirmerror.value='';}
 });
 const validateForm = () => {
 
-if(!firstName.value || /^\d/.test(firstName.value)){
+if(!result.value.firstName || /^\d/.test(result.value.firstName)){
   firsterror.value='Please enter your First Name & should not start with a number';
  
    return false;
     
 }
-else if(!lastName.value || /^\d/.test(lastName.value)){
+else if(!result.value.lastName || /^\d/.test(result.value.lastName)){
   lasterror.value='Please enter your last Name & should not start with a number';
    return false;
 }
-else if(!UserName.value){
+else if(!result.value.UserName){
   usererror.value='Please enter your username';
    return false;
 }
-else if(!email.value || !/\S+@\S+\.\S+/.test(email.value)){
+else if(!result.value.email || !/\S+@\S+\.\S+/.test(result.value.email)){
   emailerror.value='Please enter your email must xxxx@gmail.com';
    return false;
 }
-else if(!Phone.value || !/^01/.test(Phone.value) || Phone.value.length !== 11 ){
+else if(!result.value.Phone || !/^01/.test(result.value.Phone) || result.value.Phone.length !== 11 ){
   phoneerror.value='Please enter your phone & should begin with 01 with total 11 number';
    return false;
 }
