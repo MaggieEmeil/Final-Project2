@@ -85,12 +85,6 @@ Phone:'',
 email:'',
 password:'',
 });
-// const firstName = ref('');
-// const lastName = ref('');
-// const UserName = ref('');
-// const Phone= ref('');
-// const email = ref('');
-// const password = ref('');
 const confirmPassword = ref('');
 const router=useRouter();
 const firsterror= ref('');
@@ -110,42 +104,59 @@ watch(()=>confirmPassword.value, (newConfirm) =>{ if(newConfirm !== result.value
   confirmerror.value='Password must be at least 8 characters long.';}
   else{confirmerror.value='';}
 });
+watch(()=>result.value.firstName ,(newfirst) =>{ if(!newfirst|| /^\d/.test(newfirst)){
+  firsterror.value='Please enter your First Name & should not start with a number';   
+}
+else {
+   firsterror.value = '';
+ }
+});
+watch(()=>result.value.lastName ,(newlast) =>{ if(!newlast|| /^\d/.test(newlast)){
+  lasterror.value='Please enter your last Name & should not start with a number';   
+}
+else {
+   lasterror.value = '';
+ }
+});
+watch(()=>result.value.UserName ,(newuser) =>{ if(!newuser){
+  lasterror.value='Please enter your User Name';   
+}
+else {
+   usererror.value = '';
+ }
+});
+watch(()=>result.value.email ,(newemail) =>{ if(!newemail ||  !/\S+@\S+\.\S+/.test(newemail) ){
+  emailerror.value='Please enter your email must xxxx@gmail.com';   
+}
+else {
+   emailerror.value = '';
+ }
+});
+watch(()=>result.value.Phone ,(newphone) =>{ if(!newphone || !/^01/.test(newphone) || newphone.length !== 11){
+  phoneerror.value='Please enter your phone & should begin with 01 with total 11 number';   
+}
+else {
+   phoneerror.value = '';
+ }
+});
 const validateForm = () => {
-
-if(!result.value.firstName || /^\d/.test(result.value.firstName)){
-  firsterror.value='Please enter your First Name & should not start with a number';
- 
-   return false;
-    
-}
-else if(!result.value.lastName || /^\d/.test(result.value.lastName)){
-  lasterror.value='Please enter your last Name & should not start with a number';
-   return false;
-}
-else if(!result.value.UserName){
-  usererror.value='Please enter your username';
-   return false;
-}
-else if(!result.value.email || !/\S+@\S+\.\S+/.test(result.value.email)){
-  emailerror.value='Please enter your email must xxxx@gmail.com';
-   return false;
-}
-else if(!result.value.Phone || !/^01/.test(result.value.Phone) || result.value.Phone.length !== 11 ){
-  phoneerror.value='Please enter your phone & should begin with 01 with total 11 number';
-   return false;
-}
-else if (pwerror.value || confirmerror.value){
+ if (pwerror.value || confirmerror.value){
   return false;
 }
-
-else{
- firsterror.value='';
-  lasterror.value='';
-  usererror.value='';
-  emailerror.value='';
- phoneerror.value='';
-  pwerror.value='';
-  confirmerror.value='';
+else if(firsterror.value){
+  return false;
+}
+else if(lasterror.value){
+  return false;
+}
+else if(usererror.value){
+  return false;
+}
+else if(phoneerror.value){
+  return false;
+}
+else if(emailerror.value){
+  return false;
 }
 
 return true;

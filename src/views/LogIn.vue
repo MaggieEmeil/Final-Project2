@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gradient-to-r from-sky-200 to-sky-700 bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen p-4" >
-    <div class=" mr-52  bg-gradient-to-r from-yellow-100 to-yellow-50 shadow-lg rounded-lg overflow-hidden   md:w-2/3 lg:w-2/3 xl:w-2/3 min-[641px]:mr-3.5">
-      <div class="grid md:grid-cols-3 ">
+    <div class="   bg-gradient-to-r from-yellow-100 to-yellow-50 shadow-lg rounded-lg overflow-hidden w-full  md:w-2/3 lg:w-2/3 xl:w-2/3 min-[641px]:mr-3.5">
+      <div class="grid md:grid-cols-3  ">
         <!-- Left side -->
         <div class=" md:block bg-gradient-to-r from-blue-800 to-blue-400 text-white flex flex-col justify-center px-6 py-4">
           <h4 class="text-lg font-semibold">Enter Your Account</h4>
@@ -17,12 +17,14 @@
             <div>
               <label class="text-gray-800 text-sm mb-2 block">Email Id</label>
               <input name="email" type="text" class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" v-model.trim="result.email" />
+                        <span v-if="emailerror" class="text-red-500 text-sm">{{ emailerror }}</span>
+
             </div>
             <div>
               <label class="text-gray-800 text-sm mb-2 block">Password</label>
               <input name="password" type="password"  class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter password" v-model="result.password" />
+                        <span v-if="pwerror" class="text-red-500 text-sm">{{ pwerror}}</span>
             </div>
-              <span v-if="errors" class="text-red-500 text-sm">{{ errors }}</span>
           </div>
           <div class="mt-12">
             <button type="submit" class="w-full py-3 px-4 tracking-wider text-sm rounded-md text-white bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-gray-800 focus:outline-none">
@@ -37,33 +39,38 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref ,watch} from 'vue';
 import {useRouter} from 'vue-router';
-const errors= ref('');
+const emailerror= ref('');
+const pwerror= ref('');
+
 const router = useRouter();
 const result=ref({
   email:'',
   password:'',
-})
+});
+watch(()=>result.value.email ,(newemail) =>{ if(!newemail ||  !/\S+@\S+\.\S+/.test(newemail) ){
+  emailerror.value='Please enter your email must xxxx@gmail.com';   
+}
+else {
+   emailerror.value = '';
+ }
+});
+watch(()=>result.value.password,(newPass) =>{ if ( !newPass || newPass.length < 8){  
+    pwerror.value = 'Password must be at least 8 characters long.';
+}
+else {
+    pwerror.value = '';
+ } })
+
 const validateForm = () => {
+if (emailerror.value){
+  return false;
+}
+ else if (pwerror.value ){
+  return false;
+}
 
-  if (!result.value.email) {
-    errors.value = 'Email is required.';
-     return false;
-  } 
-  else if (!/\S+@\S+\.\S+/.test(result.value.email)) {
-    errors.value = 'Email must be xxx@gmail.com';
-      return false;
-  }
-
-  else if (!result.value.password) {
-    errors.value = 'Password is required.';
-     return false;
-  }
-  else if (result.value.password.length < 8) {
-    errors.value = 'Password is should be more than 8';
-    return false;
-  }
   return true;
 };
 
