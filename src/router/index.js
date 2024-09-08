@@ -14,7 +14,7 @@ const router = createRouter({
       name: 'SignUp',
       component: () => import('../views/SignUp.vue')
     },
-  
+   
     {
       path: '/search-page',
       name: 'SearchPage',
@@ -36,12 +36,12 @@ const router = createRouter({
       name: 'ShipmentsPage',
       component: () => import('../views/ShipmentsPage.vue')
     },
-    
     {
-      path: '/shipments-page/:shipments-info',
+      path: '/shipments-info',
       name: 'ShipmentsInfo',
       component: () => import('../views/ShipmentsInfo.vue')
     },
+
   ]
 })
 
