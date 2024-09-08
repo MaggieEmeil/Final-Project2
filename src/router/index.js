@@ -24,6 +24,12 @@ const router = createRouter({
       path: '/trips-page',
       name: 'TripsPage',
       component: () => import('../views/TripsPage.vue')
+    }
+    ,
+    {
+      path: '/TripsPage/:trips-info',
+      name: 'TripsInfo',
+      component: () => import('../views/TripsInfo.vue')
     },
     {
       path: '/shipments-page',
