@@ -93,24 +93,18 @@ const phoneerror= ref('');
 const emailerror= ref('');
 const pwerror= ref('');
 const confirmerror= ref('');
-const validateForm = () => {
-  
-const validatePasswords = () => {
-  if (password.value.length < 8) {
+watch(()=>password.value,(newPass) =>{ if (newPass.length < 8){  
     pwerror.value = 'Password must be at least 8 characters long.';
-  } else {
+}
+else {
     pwerror.value = '';
-  }
-  
-  if (password.value !== confirmPassword.value) {
-    confirmerror.value = 'Passwords do not match.';
-  } else {
-    confirmerror.value = '';
-  }
-};
+ } })
+watch(()=>confirmPassword.value, (newConfirm) =>{ if(newConfirm !== password.value){
+  confirmerror.value='Password must be at least 8 characters long.';}
+  else{confirmerror.value='';}
+});
+const validateForm = () => {
 
-watch(password, validatePasswords);
-watch(confirmPassword, validatePasswords);
 if(!firstName.value || /^\d/.test(firstName.value)){
   firsterror.value='Please enter your First Name & should not start with a number';
  
@@ -132,6 +126,9 @@ else if(!email.value || !/\S+@\S+\.\S+/.test(email.value)){
 else if(!Phone.value || !/^01/.test(Phone.value) || Phone.value.length !== 11 ){
   phoneerror.value='Please enter your phone & should begin with 01 with total 11 number';
    return false;
+}
+else if (pwerror.value || confirmerror.value){
+  return false;
 }
 
 else{
