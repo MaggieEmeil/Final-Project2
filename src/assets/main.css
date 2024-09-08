@@ -1,12 +1,11 @@
-<<<<<<< HEAD
-/* @import './base.css'; */
+/* <<<<<<< HEAD */
+/* @import './base.css'; */ 
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
-/* 
-#app {
-=======
-@import './base.css';
+@tailwind utilities; 
+ /* #app {} */
+/* ======= */
+/* @import './base.css'; */
 
 /* #app {
 >>>>>>> main

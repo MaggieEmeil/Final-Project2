@@ -10,7 +10,7 @@
         
         <!-- Form -->
         <form class="md:col-span-2 p-6" @submit.prevent='input'>
-          <div class="mb-6">
+          <div class="mb-6"> 
             <h3 class="text-gray-800 text-2xl font-bold">Enter your account</h3>
           </div>
           <div class="space-y-6">
