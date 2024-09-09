@@ -7,7 +7,7 @@
        </button>
   </div>
   </nav> 
-  <div class="bg-gradient-to-r from-sky-200 to-sky-700 bg-cover flex items-center justify-center min-h-screen p-4">
+  <div class="bg-gradient-to-r from-sky-200 to-sky-700 bg-cover">
  <div class=" bg-white max-w-lg shadow-lg rounded-lg overflow-hidden  me-8 md:me-0 md:w-2/3 lg:w-1/2 " @submit.prevent="input">
 <div  v-if="arr.length == 0"  class="bg-gradient-to-r from-sky-200 to-sky-900 bg-cover bg-center flex items-center justify-center min-h-screen p-4">
         <div class=" mt-11 block items-center text-center  " >
@@ -21,7 +21,7 @@
 </div>
 
 
-<Card v-else @click="display "> </Card>   
+<Card v-else @click="display" @close='close'> </Card>   
        
  </div>
   </div>  
@@ -37,12 +37,13 @@ const shipmentData = ref({from:'',
       name:'',
       items: ''}); 
 const router=useRouter();
-const displyItem=ref(false)
-const display=()=>{displyItem.value=true;}
+// const displyItem=ref(false)
+// const display=()=>{displyItem.value=true;}
 const btn=()=>{
       router.push({ name: 'ShipmentsInfo' });
 
 }
+// const close=()=>{displyItem.value=false}
 const addMore=()=>{
      router.push({ name: 'ShipmentsInfo' });
 }

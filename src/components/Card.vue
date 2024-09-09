@@ -1,8 +1,6 @@
 <template>
-    
-
 <div class="flex flex-wrap gap-10 justify-center md:justify-start">
-                <!-- Orders -->
+     <!-- cards -->
                 <div @click="display" class="bg-white p-4 mt-8 border rounded-md shadow-lg shadow-sky-800/40 hover:shadow-sky-950/40 min-[320px]:w-80 min-[960px]:w-96 w-96 flex flex-wrap">
                     <p><strong class="text-lg bg-gradient-to-l from-sky-800 to-sky-400 text-transparent bg-clip-text">
                         Shipment Name : </strong> 
@@ -20,8 +18,9 @@
                       To: </strong> 
                         
                     </p>
-                    <div class="mt-4 ml-auto flex flex-wrap gap-x-4">
-                       <div v-show="displyItem"  class=" min-h-full fixed inset-0 backdrop-opacity-sm flex items-center justify-center z-50">
+                </div>
+                    <div v-show="displyItem" class="mt-4 ml-auto flex flex-wrap gap-x-4">
+                       <div  class=" min-h-full fixed inset-0 backdrop-opacity-sm flex items-center justify-center z-50">
             <div class="bg-white p-6 rounded-md shadow-lg shadow-orange-800/40 hover:shadow-orange-950/40 sm:w-96 lg:w-2/5 md:w-1/2">
 <div class="flex-col md:flex-row justify-between flex gap-4 items-start mx-4 py-12">
     <div class="flex bg-white rounded-lg shadow dark:bg-gray-800 flex-col md:flex-row">
@@ -37,8 +36,8 @@
             </div>
       <div>
             </div>
-            <div @click="close" class="flex mb-4 text-sm font-medium">
-                <button  type="button"
+            <div class="flex mb-4 text-sm font-medium">
+                <button @click="close" type="button"
                     class="py-2 px-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ">Close
                     </button>
             </div>
@@ -49,13 +48,20 @@
      </div>  
                     </div>
                 </div>
-            </div>
+            
 </template>
  <script setup>
-import { ref } from 'vue';
+import { ref ,defineEmits  } from 'vue';
+// const emit = defineEmits(['close']); 
 const displyItem=ref(false);
-const display=()=>{displyItem.value=true;}
-const close=()=>{displyItem.value=false};
+const display=()=>{displyItem.value=true;
+    
+}
+const close=()=>{displyItem.value=false
+    console.log(displyItem.value)
+};
 
+// const close = () => {
+//     emit('close');}
  </script>
  
