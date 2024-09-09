@@ -41,11 +41,11 @@
           </div>
                       <p class="text-gray-800 text-sm mt-6 font-semibold mb-5">Shopping items</p>
 
-          <div  v-for="(item, index) in items" :key="index" class="bg-white shadow-md rounded-lg p-4 mt-4 w-full md:w-3/4 lg:w-2/3 mx-auto">
-            <h5 class="text-xl font-bold">{{ item.itemName }}</h5>
-            <p>Quantity: {{ item.quantity }}</p>
-            <p>Price: {{ item.price }}</p>
-            <p>Weight: {{ item.weight }}</p>
+          <div  v-for="(itemData, index) in items" :key="index" class="bg-white shadow-md rounded-lg p-4 mt-4 w-full md:w-3/4 lg:w-2/3 mx-auto">
+            <h5 class="text-xl font-bold">{{ itemData.itemName }}</h5>
+            <p>Quantity: {{ itemData.quantity }}</p>
+            <p>Price: {{ itemData.price }}</p>
+            <p>Weight: {{ itemData.weight }}</p>
           </div>
 
           <div class="mt-12 w-full md:w-3/4 lg:w-2/3 mx-auto flex">

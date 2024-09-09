@@ -1,9 +1,23 @@
+<<<<<<< HEAD
+/* <<<<<<< HEAD */
+/* @import './base.css'; */ 
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+ /* #app {} */
+/* ======= */
+/* @import './base.css'; */
+
+/* #app {
+>>>>>>> main
+=======
 /* @import './base.css'; */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 /* 
 #app {
+>>>>>>> main
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
