@@ -18,6 +18,7 @@
         <div class=" mt-6 flex items-center justify-between ">
               <label class="font-semibold text-gray-800 text-md mb-2 block  ">Item Details</label>
               <input name="item name" type="text"  class=" w-48  bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter item name" v-model="ItemName" />
+             <span v-if="emailerror" class="text-red-500 text-sm">{{ nameerror }}</span>
         </div>
          <div class="mt-6 flex items-center justify-between ">
              <label class="font-semibold  text-gray-800 text-md mb-2 block">Item Quantity</label>
@@ -26,15 +27,18 @@
              <input type="text" class=" text-center rounded-full bg-blue-200 border-x-0 border-gray-300 h-8 font-medium  text-gray-900 w-32 text-md "  required  v-model="number" >
              <button @click="inc" type="button"  class="flex items-center justify-center align-center rounded-full text-white bg-gradient-to-r from-sky-900 to-sky-600  p-3 h-8 "><span class="text-md font-lg  font-bold  text-center flex justify-center pb-1">+</span></button>
              </div>
+             <span v-if="emailerror" class="text-red-500 text-sm">{{ priceerror }}</span>
         </div>
         <div class="mt-6  flex items-center justify-between  ">
         <label class="font-semibold text-gray-800 text-md mb-2 block ">Total({{ price }}) $</label>
         <input name="price" type="text" class="bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500 w-48" placeholder="Single Item Price $ " v-model="price" />
+        <span v-if="emailerror" class="text-red-500 text-sm">{{ kiloerror }}</span>
         </div>
          <div class="mt-6  flex items-center justify-between">
-                        <label class="font-semibold text-gray-800 text-md mb-2 block ">Total({{kilo}}) Kg</label>
+              <label class="font-semibold text-gray-800 text-md mb-2 block ">Total({{kilo}}) Kg</label>
               <input name="item name" type="number"  class="w-48 items-center bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Single Item Weight" v-model="kilo" />
-                   </div>
+             <span v-if="emailerror" class="text-red-500 text-sm">{{ numbererror }}</span> 
+          </div>
            
               <div class=" flex items-center  justify-center mt-7">
              <label class="font-semibold text-gray-800 text-md  block">Item Photo :</label> 
@@ -50,7 +54,7 @@
                         hover:file:cursor-pointer 
                         hover:file:text-black "
                     />
-               
+             <span v-if="emailerror" class="text-red-500 text-sm">{{ emailerror }}</span> 
              </div>
               </div>
               <!-- <div class="mt-8 flex flex-wrap justify-around">
@@ -68,7 +72,6 @@
                     />
                     <img v-if="meals.img" :src="meals.img" class="mt-2 h-24 w-24 object-cover rounded-full"/>
                 </div> -->
-             <span v-if="error" class="text-red-500 text-sm">{{ error }}</span>
 
             <br>
              <div class="flex items-center justify-around mt-5">
@@ -94,10 +97,25 @@ const ItemName = ref('');
 const price = ref('');
 const kilo = ref('');
 const number = ref(1);
-const error = ref('');
-
-const dec = () => { if (number.value > 1) number.value--; };
-const inc = () => { number.value++; };
+const nameerror = ref('');
+const priceerror = ref('');
+const kiloerror = ref('');
+const numbererror = ref('');
+const result=ref({
+  ItemName:'',
+  price:'',
+  kilo:'',
+  number:'',
+});
+watch(()=>result.value.email ,(newemail) =>{ if(!newemail ||  !/\S+@\S+\.\S+/.test(newemail) ){
+  emailerror.value='Please enter your email must xxxx@gmail.com';   
+}
+else {
+   emailerror.value = '';
+ }
+});
+const dec = () => { if (result.value.number > 1) result.value.number--; };
+const inc = () => { result.value.number++; };
 const cancel=()=>{
   router.push({ name: 'ShipmentsPage' });
 }
