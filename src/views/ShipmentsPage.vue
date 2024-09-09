@@ -4,7 +4,6 @@
       <span class="m-auto self-center text-2xl font-semibold text-center whitespace-nowrap dark:text-white">MY SHIPMENTS</span>
       <button @click="addMore" class="rounded-full mr-3">
                     <svg class="h-8 w-8 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="10" />  <line x1="12" y1="8" x2="12" y2="16" />  <line x1="8" y1="12" x2="16" y2="12" /></svg>
-<<<<<<< HEAD
        </button>
   </div>
   </nav> 
@@ -45,43 +44,6 @@ const btn=()=>{
 
 }
 // const close=()=>{displyItem.value=false}
-=======
-                </button>
-  </div>
-  </nav> 
-     <div class=" bg-gradient-to-r from-sky-200 to-sky-900 bg-cover bg-center flex items-center justify-center min-h-screen p-4" >
-        <div class=" bg-white max-w-lg shadow-lg rounded-lg overflow-hidden  me-8 md:me-0 md:w-2/3 lg:w-1/2 " @submit.prevent="input">
-       <div class=" mt-11 block items-center text-center  ">
-       </div>
-         <div class=" mt-11 block items-center text-center  " v-show="show">
-          <p class="text-md" >You don't have any shipments .</p>
-          <br>
-          <p class="text-md" >Add a new one .</p>
-           <button @click="btn" class="mt-11 block items-center text-center  w-96 py-3 px-4 font-semibold text-md m-auto mb-7 rounded-md text-white bg-gradient-to-r from-sky-900 to-sky-600 hover:bg-gray-800 ">
-               Add Shipments 
-              </button>
-        </div>
-  
-            
-                <!-- <ConfirmMsg v-if="show" @done="Done"></ConfirmMsg> -->
-                               <!-- <p class="text-gray-800 text-sm mt-6 font-semibold mb-5">Shopping items</p> -->
-      </div>
-      </div>
-
-</template> 
-<script setup>
-import { ref } from 'vue';
-// import ConfirmMsg from '../components/ConfirmMsg.vue';
-
-import {useRouter} from 'vue-router';
-const router=useRouter();
-// const items = ref([]);
-const show=ref(true);
-const btn=()=>{
-      router.push({ name: 'ShipmentsInfo' });
-      show.value=!show.value;
-}
->>>>>>> main
 const addMore=()=>{
      router.push({ name: 'ShipmentsInfo' });
 }
