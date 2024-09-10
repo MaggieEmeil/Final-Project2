@@ -49,14 +49,14 @@ const result=ref({
   email:'',
   password:'',
 });
-watch(()=>result.value.email ,(newemail) =>{ if(!newemail ||  !/\S+@\S+\.\S+/.test(newemail) ){
+watch(()=>result.value.email ,(newemail) =>{ if(newemail =='' ||  !/\S+@\S+\.\S+/.test(newemail) ){
   emailerror.value='Please enter your email must xxxx@gmail.com';   
 }
 else {
    emailerror.value = '';
  }
 });
-watch(()=>result.value.password,(newPass) =>{ if ( !newPass || newPass.length < 8){  
+watch(()=>result.value.password,(newPass) =>{ if ( newPass == '' || newPass.length < 8){  
     pwerror.value = 'Password must be at least 8 characters long.';
 }
 else {
@@ -64,19 +64,19 @@ else {
  } })
 
 const validateForm = () => {
-if (emailerror.value){
+if (!result.value.email|| emailerror.value !== '' ){
   return false;
 }
- else if (pwerror.value ){
+ if (!result.value.password || pwerror.value !== ''){
   return false;
 }
-
   return true;
+
 };
 
 const input=() =>{
   if(validateForm()){
-router.push({ name: 'SearchPage' });
+router.push({ name: 'searchPage' });
   }
 }
 </script>

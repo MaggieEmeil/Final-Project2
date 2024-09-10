@@ -101,7 +101,7 @@ else {
     pwerror.value = '';
  } })
 watch(()=>confirmPassword.value, (newConfirm) =>{ if(newConfirm !== result.value.password){
-  confirmerror.value='Password must be at least 8 characters long.';}
+  confirmerror.value='Passwords did not match.';}
   else{confirmerror.value='';}
 });
 watch(()=>result.value.firstName ,(newfirst) =>{ if(!newfirst|| /^\d/.test(newfirst)){
@@ -140,22 +140,22 @@ else {
  }
 });
 const validateForm = () => {
- if (pwerror.value || confirmerror.value){
+ if (pwerror.value || confirmerror.value || !confirmPassword.value || !result.value.password){
   return false;
 }
-else if(firsterror.value){
+else if(!result.value.firstName ||firsterror.value){
   return false;
 }
-else if(lasterror.value){
+else if(!result.value.lastName || lasterror.value){
   return false;
 }
-else if(usererror.value){
+else if(!result.value.UserName || usererror.value){
   return false;
 }
-else if(phoneerror.value){
+else if(!result.value.Phone || phoneerror.value){
   return false;
 }
-else if(emailerror.value){
+else if(!result.value.email || emailerror.value){
   return false;
 }
 
@@ -163,7 +163,7 @@ return true;
 };
 const input=() =>{
   if(validateForm()){
-    router.push({ name: 'SearchPage' });
+    router.push({ name: 'searchPage' });
 
   }
 }
