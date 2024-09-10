@@ -1,75 +1,76 @@
 <template>
-  
-
-    <!-- Main Content -->
-    <div id="content" :class="{ 'ml-64': isSidebarOpen, 'ml-0': !isSidebarOpen }" class="transition-margin duration-300 ease-in-out">
-      <SearchForm />
-      <div id="cards" class="grid grid-cols-auto-fit-minmax gap-4 ">
-        <CardSearch
-          productName="Smartphone"
-          fromCountry="USA"
-          toCountry="Canada"
-          deliveryDate="2024-09-30"
-          :weight="2"
-          userName="John Doe"
-          rewardAmount="$50"
-        />
-         <CardSearch
-          productName="Smartphone"
-          fromCountry="USA"
-          toCountry="Canada"
-          deliveryDate="2024-09-30"
-          :weight="2"
-          userName="John Doe"
-          rewardAmount="$50"
-        /> <CardSearch
-          productName="Smartphone"
-          fromCountry="USA"
-          toCountry="Canada"
-          deliveryDate="2024-09-30"
-          :weight="2"
-          userName="John Doe"
-          rewardAmount="$50"
-        /> <CardSearch
-          productName="Smartphone"
-          fromCountry="USA"
-          toCountry="Canada"
-          deliveryDate="2024-09-30"
-          :weight="2"
-          userName="John Doe"
-          rewardAmount="$50"
-        /> <CardSearch
-          productName="Smartphone"
-          fromCountry="USA"
-          toCountry="Canada"
-          deliveryDate="2024-09-30"
-          :weight="2"
-          userName="John Doe"
-          rewardAmount="$50"
-        /> <CardSearch
-          productName="Smartphone"
-          fromCountry="USA"
-          toCountry="Canada"
-          deliveryDate="2024-09-30"
-          :weight="2"
-          userName="John Doe"
-          rewardAmount="$50"
-        />
-        <!-- Repeat Card components as needed -->
-      </div>
+  <!-- Main Content -->
+  <div id="content" class="transition-margin duration-300 ease-in-out">
+    <SearchForm />
+    <div id="cards" class="grid grid-cols-auto-fit-minmax gap-4">
+      <CardSearch
+        productName="Smartphone"
+        fromCountry="USA"
+        toCountry="Canada"
+        deliveryDate="2024-09-30"
+        :weight="2"
+        userName="John Doe"
+        rewardAmount="$50"
+      />
+      <CardSearch
+        productName="Smartphone"
+        fromCountry="USA"
+        toCountry="Canada"
+        deliveryDate="2024-09-30"
+        :weight="2"
+        userName="John Doe"
+        rewardAmount="$50"
+      />
+      <CardSearch
+        productName="Smartphone"
+        fromCountry="USA"
+        toCountry="Canada"
+        deliveryDate="2024-09-30"
+        :weight="2"
+        userName="John Doe"
+        rewardAmount="$50"
+      />
+      <CardSearch
+        productName="Smartphone"
+        fromCountry="USA"
+        toCountry="Canada"
+        deliveryDate="2024-09-30"
+        :weight="2"
+        userName="John Doe"
+        rewardAmount="$50"
+      />
+      <CardSearch
+        productName="Smartphone"
+        fromCountry="USA"
+        toCountry="Canada"
+        deliveryDate="2024-09-30"
+        :weight="2"
+        userName="John Doe"
+        rewardAmount="$50"
+      />
+      <CardSearch
+        productName="Smartphone"
+        fromCountry="USA"
+        toCountry="Canada"
+        deliveryDate="2024-09-30"
+        :weight="2"
+        userName="John Doe"
+        rewardAmount="$50"
+      />
+      <!-- Repeat Card components as needed -->
     </div>
-  
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import SearchForm from '../components/SearchBar.vue'
-import CardSearch from '../components/CardSearch.vue'
+import { ref } from "vue";
+import SearchForm from "../components/SearchBar.vue";
+import CardSearch from "../components/CardSearch.vue";
 
-const isSidebarOpen = ref(true)
+const isSidebarOpen = ref(true);
 
 function toggleSidebar() {
-  isSidebarOpen.value = !isSidebarOpen.value
+  isSidebarOpen.value = !isSidebarOpen.value;
 }
 </script>
 
@@ -78,7 +79,6 @@ function toggleSidebar() {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  
 }
 
 /* Sidebar */
@@ -90,13 +90,15 @@ function toggleSidebar() {
 #content {
   padding-top: 4rem; /* Adjust for the navbar height */
   transition: margin-left 0.3s ease;
-  
 }
 
 /* Cards layout */
 #cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(48.5%, 1fr)); /* Responsive grid */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(48.5%, 1fr)
+  ); /* Responsive grid */
   gap: 20px;
   margin-top: 1%;
   width: 87%;
