@@ -3,9 +3,9 @@
     <div class="   bg-gradient-to-r from-yellow-100 to-yellow-50 shadow-lg rounded-lg overflow-hidden w-full  md:w-2/3 lg:w-2/3 xl:w-2/3 min-[641px]:mr-3.5">
       <div class="grid md:grid-cols-3  ">
         <!-- Left side -->
-        <div class=" md:block bg-gradient-to-r from-blue-800 to-blue-400 text-white flex flex-col justify-center px-6 py-4">
-          <h4 class="text-lg font-semibold">Enter Your Account</h4>
-          <p class="mt-3 text-sm">Welcome to our sign-in page! Get started by entering your account.</p>
+        <div class=" md:block bg-gradient-to-r from-blue-800 to-blue-400 text-white  flex flex-col  justify-center px-11 py-11 h-full">
+          <h2 class="text-lg font-semibold">Enter Your Account</h2>
+          <p class="mt-3 text-lg">Welcome to our sign-in page! Get started by entering your account.</p>
         </div>
         
         <!-- Form -->
@@ -15,23 +15,23 @@
           </div>
           <div class="space-y-6">
             <div>
-              <label class="text-gray-800 text-sm mb-2 block">Email Id</label>
-              <input name="email" type="text" class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" v-model.trim="result.email" />
-                        <span v-if="emailerror" class="text-red-500 text-sm">{{ emailerror }}</span>
+              <label class="text-gray-800 text-md mb-2 font-semibold block">Email Id</label>
+              <input name="email" type="text" class="w-full bg-white border border-gray-300 text-gray-800 text-md px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" v-model.trim="result.email" />
+                        <span v-if="emailerror" class="text-red-500 text-md">{{ emailerror }}</span>
 
             </div>
             <div>
-              <label class="text-gray-800 text-sm mb-2 block">Password</label>
-              <input name="password" type="password"  class="w-full bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter password" v-model="result.password" />
-                        <span v-if="pwerror" class="text-red-500 text-sm">{{ pwerror}}</span>
+              <label class="text-gray-800 text-md font-semibold mb-2 block">Password</label>
+              <input name="password" type="password"  class="w-full bg-white border border-gray-300 text-gray-800 text-md px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter password" v-model="result.password" />
+                        <span v-if="pwerror" class="text-red-500 text-md">{{ pwerror}}</span>
             </div>
           </div>
           <div class="mt-12">
-            <button type="submit" class="w-full py-3 px-4 tracking-wider text-sm rounded-md text-white bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-gray-800 focus:outline-none">
+            <button type="submit" class="w-full py-3 px-4 font-semibold tracking-wider text-md rounded-md text-white bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-gray-800 focus:outline-none">
               Login
             </button>
           </div>
-          <p class="text-gray-800 text-sm mt-6">Don't have an account? <RouterLink to="/sign-up" class="text-blue-600 font-semibold hover:underline ml-1">Sign up here</RouterLink></p>
+          <p class="text-gray-800 text-md mt-6">Don't have an account? <RouterLink to="/sign-up" class="text-blue-600 font-semibold hover:underline ml-1">Sign up here</RouterLink></p>
         </form>
       </div>
     </div>
