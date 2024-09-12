@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <!-- Search Form -->
     <div class="search-form top-0 left-0 w-full bg-gray-100 p-6 rounded-b-lg shadow-md z-50 fade-in">
       <!-- Search Fields -->
@@ -8,7 +8,6 @@
         <!-- From Location (Dropdown) -->
         <div class="flex items-center bg-white rounded-lg shadow-sm input-field">
           <span class="text-gray-500 px-4">
-            <!-- From Location Icon -->
             <img src="https://www.svgrepo.com/show/314476/plane-departure-solid.svg" class="h-6 me-3 rounded-full"/>
           </span>
           <select v-model="fromLocation" class="w-full p-3 bg-transparent outline-none rounded-r-lg">
@@ -22,8 +21,7 @@
         <!-- To Location (Dropdown) -->
         <div class="flex items-center bg-white rounded-lg shadow-sm input-field">
           <span class="text-gray-500 px-4">
-            <!-- To Location Icon -->
-           <img src="https://www.svgrepo.com/show/314477/plane-arrival-solid.svg" class="h-6 me-3 rounded-full"/>
+            <img src="https://www.svgrepo.com/show/314477/plane-arrival-solid.svg" class="h-6 me-3 rounded-full"/>
           </span>
           <select v-model="toLocation" class="w-full p-3 bg-transparent outline-none rounded-r-lg">
             <option value="" disabled>To (City, Country)</option>
@@ -51,8 +49,7 @@
         <!-- Weight Input -->
         <div class="flex items-center bg-white rounded-lg shadow-sm input-field">
           <span class="text-gray-500 px-4">
-            <!-- Weight Icon -->
-          <img src="https://www.svgrepo.com/show/323633/weight.svg" class="h-6 me-3 rounded-full"/>
+            <img src="https://www.svgrepo.com/show/323633/weight.svg" class="h-6 me-3 rounded-full"/>
           </span>
           <input
             v-model="weight"
@@ -75,26 +72,26 @@
       </div>
 
       <!-- Toggle Switch for Shipments and Trips -->
-    <div class="mt-4 flex justify-center">
-    <button
-      @click="fetchShipmentsData"
-      :class="[
-        'px-4 py-2 rounded-full mr-2 text-black text-lg',
-        showShipments ? 'bg-blue-500 hover:bg-blue-600' : 'bg-white text-gray-800 border-2 border-gray-500 hover:bg-gray-100'
-      ]"
-    >
-      Shipments
-    </button>
-    <button
-      @click="fetchTripsData"
-      :class="[
-        'px-4 py-2 rounded-full text-black text-lg',
-        showTrips ? 'bg-blue-500 hover:bg-blue-600' : ' bg-white text-gray-800 border-2 border-gray-500 hover:bg-gray-100'
-      ]"
-    >
-      Trips
-    </button>
-  </div>
+      <div class="mt-4 flex justify-center">
+        <button
+          @click="fetchShipmentsData"
+          :class="[
+            'px-4 py-2 rounded-full mr-2 text-lg font-semibold',
+            showShipments ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 border-2 border-gray-500 hover:bg-gray-100'
+          ]"
+        >
+          Shipments
+        </button>
+        <button
+          @click="fetchTripsData"
+          :class="[
+            'px-4 py-2 rounded-full text-lg font-semibold',
+            showTrips ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 border-2 border-gray-500 hover:bg-gray-100'
+          ]"
+        >
+          Trips
+        </button>
+      </div>
     </div>
 
     <!-- Display Cards for Shipments and Trips (Outside of Search Form) -->
@@ -133,8 +130,6 @@
   </div>
 </template>
 
-
-
 <script setup>
 import { ref, watch } from 'vue';
 import axios from 'axios';
@@ -145,9 +140,6 @@ const showShipments = ref(true); // Default to showing shipments
 const showTrips = ref(false);
 const shipmentsCards = ref([]);
 const tripsCards = ref([]);
-const results = ref([]);
-
-// Available locations for dropdown
 const locations = [
   'New York, USA',
   'Los Angeles, USA',
@@ -219,6 +211,7 @@ watch([fromLocation, toLocation, departureDate, weight], () => {
   search(); // Perform search when inputs change
 });
 </script>
+
 
 
 <style scoped>

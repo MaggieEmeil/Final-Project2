@@ -35,22 +35,24 @@
     </div>
 
     <!-- Dynamic Modal Popup -->
-     <div v-if="isPopupVisible" class="fixed inset-0 flex items-center justify-center backdrop-blur">
+    <div v-if="isPopupVisible" class="fixed inset-0 flex items-center justify-center backdrop-blur">
       <div class="popup bg-white p-6 rounded-lg shadow-lg scale-up">
         <h2 class="text-lg font-bold mb-4">Request Confirmation</h2>
-        
+
         <!-- Use v-for to loop through requestData and show cards -->
-        <CardComponent
-          v-for="(request, index) in requestData"
-          :key="index"
-          :productName="request.productName"
-          :fromCountry="request.fromCountry"
-          :toCountry="request.toCountry"
-          :deliveryDate="request.deliveryDate"
-          :weight="request.weight"
-          :userName="request.userName"
-          :rewardAmount="request.rewardAmount"
-        />
+        <div v-for="(request, index) in requestData" :key="index">
+          <CardComponent
+            :productName="request.productName"
+            :fromCountry="request.fromCountry"
+            :toCountry="request.toCountry"
+            :deliveryDate="request.deliveryDate"
+            :weight="request.weight"
+            :userName="request.userName"
+            :rewardAmount="request.rewardAmount"
+            @click="handleCardClick(request)"
+          />
+        </div>
+
 
         <div class="mt-4 flex justify-end space-x-4">
           <button @click="closePopup" class="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500 transition">Cancel</button>
@@ -63,9 +65,10 @@
 
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
 import { useRouter } from 'vue-router';
-import CardComponent from '../components/CardPopUp.vue';
+import axios from 'axios';  
+import CardComponent from '../components/CardPopUp.vue';  
+
 // Props
 const props = defineProps({
   productName: String,
@@ -81,16 +84,12 @@ const props = defineProps({
 // Reactive variables
 const isPopupVisible = ref(false);
 const requestData = ref([]); // Store data from the backend
-const router = useRouter();
 
-// Functions
 const openPopup = async () => {
   isPopupVisible.value = true;
-
-  // Fetch data from the backend
   try {
     const response = await axios.get(`/api/requests/${props.cardId}`);
-    requestData.value = response.data; // Store the fetched data in requestData
+    requestData.value = response.data;
   } catch (error) {
     console.error("Error fetching request data:", error);
   }
@@ -104,7 +103,14 @@ const confirmRequest = () => {
   console.log('Request confirmed for card ID:', props.cardId);
   closePopup();
 };
+
+// Handle card click event
+const handleCardClick = (request) => {
+  console.log('Card clicked:', request);
+  // Add your logic for what should happen when a card is clicked
+};
 </script>
+
 
 <style scoped>
 .card {
