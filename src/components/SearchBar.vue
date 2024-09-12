@@ -62,7 +62,7 @@
       </div>
 
       <!-- Search Button -->
-      <div class="mt-4 flex justify-center">
+       <div class="mt-4 flex justify-center">
         <button
           @click="search"
           class="bg-blue-500 text-white px-6 py-2 rounded-lg"
@@ -131,12 +131,12 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import axios from 'axios';
-import TripCard from '../components/TripCard.vue'; // Adjust the path as needed
+import TripCard from '../components/TripCard.vue';
 import CardSearch from '../components/CardSearch.vue';
 
-const showShipments = ref(true); // Default to showing shipments
+const showShipments = ref(true); // Ensure shipments are shown by default
 const showTrips = ref(false);
 const shipmentsCards = ref([]);
 const tripsCards = ref([]);
@@ -210,8 +210,12 @@ const search = () => {
 watch([fromLocation, toLocation, departureDate, weight], () => {
   search(); // Perform search when inputs change
 });
-</script>
 
+// On component mount, fetch shipments data
+onMounted(() => {
+  fetchShipmentsData(); // Load shipments by default when component mounts
+});
+</script>
 
 
 <style scoped>
@@ -262,7 +266,6 @@ watch([fromLocation, toLocation, departureDate, weight], () => {
   padding-left: 10px;
 }
 
-
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -272,22 +275,15 @@ watch([fromLocation, toLocation, departureDate, weight], () => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(48.5%, 1fr)); /* Responsive grid */
   gap: 20px;
-  
+  margin-left: 6%;
   width: 87%;
 }
-.ShipmentsCards{
+.ShipmentsCards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(48.5%, 1fr) );
+  grid-template-columns: repeat(auto-fit, minmax(48.5%, 1fr));
   gap: 20px;
   margin-top: 1%;
   width: 87%;
   margin-left: 6%;
 }
 </style>
-
-display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(48.5%, 1fr) );
-    gap: 20px;
-    margin-top: 1%;
-    width: 87%;
-    margin-left: 6%;
