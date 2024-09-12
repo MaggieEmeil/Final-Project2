@@ -1,7 +1,8 @@
 <template>
   <header>
-<<<<<<< HEAD
-    <nav class="top-0 z-50 w-full bg-blue-500 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <nav
+      class="top-0 z-50 w-full bg-blue-500 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+    >
       <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
           <!-- Toggle Button for Mobile -->
@@ -9,17 +10,6 @@
             v-if="isMobile"
             @click="$emit('toggleSidebar')"
             class="inline-flex items-center p-2 text-sm text-black rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 bg-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-=======
-    <nav
-      class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
-    >
-      <div class="px-3 py-3 lg:px-5 lg:pl-3">
-        <div class="flex items-center justify-between"> 
-          <!-- Toggle Button for Mobile -->
-          <button
-            @click="toggleSidebar"
-            class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 bg-blue-600 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
->>>>>>> main
           >
             <span class="sr-only">Open sidebar</span>
             <svg
@@ -35,17 +25,15 @@
                 d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
               ></path>
             </svg>
-<<<<<<< HEAD
           </button>
-          
+
           <!-- Logo -->
-          <router-link v-if="!isMobile" id="logo" to="" class="flex items-center">
-            <img src="https://www.svgrepo.com/show/372594/plane.svg" class="h-8 me-3" />
-            <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">HetchHicker</span>
-=======
-          </button> 
-          <!-- Logo -->
-          <router-link id="logo" to="" class="flex items-center">
+          <router-link
+            v-if="!isMobile"
+            id="logo"
+            to=""
+            class="flex items-center"
+          >
             <img
               src="https://www.svgrepo.com/show/372594/plane.svg"
               class="h-8 me-3"
@@ -54,7 +42,6 @@
               class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white"
               >HetchHicker</span
             >
->>>>>>> main
           </router-link>
         </div>
       </div>
@@ -63,8 +50,7 @@
 </template>
 
 <script setup>
-<<<<<<< HEAD
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
 const isMobile = ref(false);
 
@@ -74,22 +60,14 @@ function handleResize() {
 
 onMounted(() => {
   handleResize(); // Check initial size
-  window.addEventListener('resize', handleResize); // Watch for resize events
+  window.addEventListener("resize", handleResize); // Watch for resize events
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener('resize', handleResize); // Clean up listener
+  window.removeEventListener("resize", handleResize); // Clean up listener
 });
 </script>
 
 <style scoped>
 /* Add custom styles if needed */
 </style>
-=======
-  import { ref } from 'vue';
-  import {useRouter} from 'vue-router';
-  const router=useRouter();
-  const addMore=()=>{
-     router.push({ name: 'ShipmentsInfo' });}
-</script>
->>>>>>> main
