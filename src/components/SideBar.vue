@@ -7,7 +7,7 @@
         '-translate-x-full': !isSidebarOpen,
         'sm:translate-x-0': true,
       }"
-      class="fixed top-20 w-64 max-h-[100vh] p-5 min-h-full transition-transform border-t border-r border-white dark:bg-sky-900 "
+      class="w-64 max-h-[100vh] p-5 min-h-full transition-transform bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 "
     >
       <router-link to="" class="flex items-center">
         <span
