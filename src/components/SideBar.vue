@@ -6,7 +6,11 @@
         '-translate-x-full': !isSidebarOpen,
         'sm:translate-x-0': true,
       }"
+<<<<<<< HEAD
       class="top-20 w-64 max-h-[100vh] p-5 min-h-full transition-transform border-t border-r border-white bg-blue-500"
+=======
+      class="w-64 max-h-[100vh] p-5 min-h-full transition-transform bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 "
+>>>>>>> main
     >
       <router-link to="" class="flex items-center">
         <span id="logo2" class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
@@ -58,6 +62,7 @@
   })
   </script>
 
+<<<<<<< HEAD
   <style scoped>
   #sidebar {
     height: 100vh; /* Full viewport height */
@@ -83,3 +88,8 @@
     padding: 1rem; /* Optional padding */
   }
   </style>
+=======
+<style scoped>
+/* Add custom styles if needed */
+</style>
+>>>>>>> main
