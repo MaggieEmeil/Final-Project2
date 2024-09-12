@@ -35,22 +35,15 @@
     </div>
 
     <!-- Dynamic Modal Popup -->
-     <div v-if="isPopupVisible" class="fixed inset-0 flex items-center justify-center backdrop-blur">
+    <div v-if="isPopupVisible" class="fixed inset-0 flex items-center justify-center backdrop-blur">
       <div class="popup bg-white p-6 rounded-lg shadow-lg scale-up">
         <h2 class="text-lg font-bold mb-4">Request Confirmation</h2>
         
         <!-- Use v-for to loop through requestData and show cards -->
-        <CardComponent
-          v-for="(request, index) in requestData"
-          :key="index"
-          :productName="request.productName"
-          :fromCountry="request.fromCountry"
-          :toCountry="request.toCountry"
-          :deliveryDate="request.deliveryDate"
-          :weight="request.weight"
-          :userName="request.userName"
-          :rewardAmount="request.rewardAmount"
-        />
+        <div v-for="(request, index) in requestData" :key="index" class="mb-4">
+          <p>Request from {{ request.userName }} for {{ request.productName }}</p>
+          <p>Reward: {{ request.rewardAmount }}</p>
+        </div>
 
         <div class="mt-4 flex justify-end space-x-4">
           <button @click="closePopup" class="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500 transition">Cancel</button>
@@ -65,7 +58,7 @@
 import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
-import CardComponent from '../components/CardPopUp.vue';
+
 // Props
 const props = defineProps({
   productName: String,
