@@ -27,28 +27,7 @@
       </div>
     </nav>
     <ShipmentPop v-if="show" @done="Done" @cancel="cancel"></ShipmentPop>
-    <!-- <div  @click="display" class="bg-white p-5 rounded-md shadow-lg hover:shadow-sky-950/40 min-[320px]:w-80 min-[960px]:w-96 lg:w-[30%] h-[30%] flex flex-col items-center">
-  <Card></Card>
-  </div> -->
     <div class="grid grid-cols-2">
-      <!-- Loop through cardData and render a Card component for each object -->
-      <!-- <RouterLink
-      :to="card.route"
-       v-for="(card, index) in cardData"
-      :key="index"
-      :productName="card.productName"
-      :fromCountry="card.fromCountry"
-      :toCountry="card.toCountry"
-      :deliveryDate="card.deliveryDate"
-      :weight="card.weight"
-      :userName="card.userName"
-      :rewardAmount="card.rewardAmount"
-      @click="cardInfo"
-    >
-    <Card
-    >
-    </Card>
-    </RouterLink> -->
 
       <div
         v-for="(card, index) in cardData"
@@ -123,10 +102,6 @@
         </div>
       </div>
     </div>
-    <!-- <div v-show="display" class="fixed inset-0 backdrop-blur-sm flex items-center justify-center z-50">
-    <h2>Hello</h2>
-  </div> -->
-    <!-- <Card v-if='displayInfo' :shipmentInfo='shipmentInfo'></Card> -->
   </div>
 </template>
 
@@ -140,28 +115,21 @@ const show = ref(false);
 const display = ref(false);
 const router = useRouter();
 const cardData = ref([]);
-// const cardData = ref([
-//  { productName: 'Item 1', fromCountry: 'City A', toCountry:'City B', deliveryDate: '5', userName: 'asd', weight: 4, rewardAmount: 5, route: '/home/shipments-page/1'},
-//  { productName: 'Item 2', fromCountry: 'City C', toCountry:'City D', deliveryDate: '6', userName: 'qwe', weight: 5, rewardAmount: 7, route: '/home/shipments-page/2'},
-// ]);
 
 const addMore = () => {
   show.value = true;
 };
 
 const Done = (newCard) => {
-  // axios
   show.value = false;
   cardData.value.push(newCard);
-  console.log(cardData);
-};
+
+}
 
 const cancel = () => {
   show.value = false;
 };
-const cardInfo = () => {
-  display.value = true;
-};
+
 // Fetch the card data when the component is mounted
 // onMounted(() => {
 //   axios

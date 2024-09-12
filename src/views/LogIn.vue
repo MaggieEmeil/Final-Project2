@@ -39,6 +39,7 @@
 </template>
 
 <script setup>
+import axios from "axios"
 import { ref ,watch} from 'vue';
 import {useRouter} from 'vue-router';
 const usererror= ref('');
@@ -74,8 +75,21 @@ const validateForm = () => {
 };
 
 const input=() =>{
+  let config = {
+  headers: {
+   "Access-Control-Allow-Origin" :"*"
+  }
+}
   if(validateForm()){
-router.push({ name: 'searchPage' });
+// router.push({ name: 'searchPage' });
+axios.post("https://hitchhicker.a3lanatk-courses.fyi/accounts/login/",{
+  email:result.UserName , 
+  password : result.password
+} ,config ).then((res)=>{
+  console.log(res)
+}).catch((error)=>{
+  console.log(error)
+})
   }
 }
 </script>
