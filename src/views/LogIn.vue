@@ -15,9 +15,9 @@
           </div>
           <div class="space-y-6">
             <div>
-              <label class="text-gray-800 text-md mb-2 font-semibold block">Email Id</label>
-              <input name="email" type="text" class="w-full bg-white border border-gray-300 text-gray-800 text-md px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter email" v-model.trim="result.email" />
-                        <span v-if="emailerror" class="text-red-500 text-md">{{ emailerror }}</span>
+              <label class="text-gray-800 text-md mb-2 font-semibold block">User Name</label>
+              <input name="username" type="text" class="w-full bg-white border border-gray-300 text-gray-800 text-md px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter username" v-model="result.UserName" />
+                        <span v-if="usererror" class="text-red-500 text-md">{{ usererror }}</span>
 
             </div>
             <div>
@@ -41,19 +41,18 @@
 <script setup>
 import { ref ,watch} from 'vue';
 import {useRouter} from 'vue-router';
-const emailerror= ref('');
+const usererror= ref('');
 const pwerror= ref('');
-
 const router = useRouter();
 const result=ref({
-  email:'',
+  UserName:'',
   password:'',
 });
-watch(()=>result.value.email ,(newemail) =>{ if(newemail =='' ||  !/\S+@\S+\.\S+/.test(newemail) ){
-  emailerror.value='Please enter your email must xxxx@gmail.com';   
+watch(()=>result.value.UserName ,(newuser) =>{ if(newuser == ""){
+  usererror.value='Please enter your User Name';   
 }
 else {
-   emailerror.value = '';
+   usererror.value = '';
  }
 });
 watch(()=>result.value.password,(newPass) =>{ if ( newPass == '' || newPass.length < 8){  
@@ -64,10 +63,10 @@ else {
  } })
 
 const validateForm = () => {
-if (!result.value.email|| emailerror.value !== '' ){
+ if(!result.value.UserName || usererror.value !== ''){
   return false;
 }
- if (!result.value.password || pwerror.value !== ''){
+ else if(!result.value.password || pwerror.value !== ''){
   return false;
 }
   return true;

@@ -26,11 +26,7 @@ const routes = [
         name: "shipmentPage",
         component: ShipmentsPage,
       },
-      {
-        path: "shipments-info",
-        name: "ShipmentsInfo",
-        component: () => import("../views/ShipmentsInfo.vue"),
-      },
+   
       {
         path: "trips",
         name: "tripsPage",
@@ -42,6 +38,11 @@ const routes = [
         component: () => import("../views/TripsInfo.vue"),
       },
     ],
+  },
+  {
+    path: "/errorpage",
+    name: "ErrorPage",
+    component: () => import("../views/ErrorPage.vue"),
   },
 ];
 
