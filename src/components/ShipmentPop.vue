@@ -19,8 +19,7 @@
             <label class="font-semibold text-gray-800 text-md mb-2 block  ">Item Name</label>
             <input name="item name" type="text"  class="w-80 bg-white border  border-shadow-black text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter item name" v-model="newCard.ItemName" />
           </div>
-                  <!-- <span v-if="nameerror" class="text-red-500 text-sm">{{ nameerror }}</span> -->
-
+        <span v-if="nameerror" class="text-red-500 text-sm">{{ nameerror }}</span>
         <div class="mt-6 flex items-center justify-between ">
           <label class="font-semibold  text-gray-800 text-md mb-2 block">Item Quantity</label>
           <div class="bg-blue-200  flex items-center text-center rounded-full ">
@@ -29,15 +28,17 @@
             <button @click="inc" type="button"  class="flex items-center justify-center align-center rounded-full text-white bg-gradient-to-r from-sky-900 to-sky-600  p-3 h-8 "><span class="text-md font-lg  font-bold  text-center flex justify-center pb-1">+</span></button>
           </div>
         </div>
-        
+          <span v-if="numbererror" class="text-red-500 text-sm">{{ numbererror }}</span>
         <div class="mt-6  flex items-center justify-between  ">
           <label class="font-semibold text-gray-800 text-md mb-2 block ">Total({{ newCard.price }}) $</label>
           <input name="price" type="number" class="bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500 w-80" placeholder="Single Item Price $ " v-model="newCard.price" />
         </div>
+          <span v-if="priceerror" class="text-red-500 text-sm">{{ priceerror }}</span>
          <div class="mt-6  flex items-center justify-between">
           <label class="font-semibold text-gray-800 text-md mb-2 block ">Total({{newCard.FreeWeight}}) Kg</label>
           <input name="item name" type="number"  class="w-80 items-center bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Single Item Weight" v-model="newCard.FreeWeight" />
         </div>
+         <span v-if="kiloerror" class="text-red-500 text-sm">{{ kiloerror }}</span> 
           <div class="mt-6  flex items-center justify-between">
               <label class="font-semibold text-gray-800 text-md mb-2 block">From Country</label>
               <select v-model="newCard.From" class="w-80 items-center bg-white border border-gray-300 text-gray-800 text-sm px-4 py-2.5 rounded-md outline-blue-500">
@@ -229,6 +230,14 @@ const newCard = ref({
   img: '',
   Date: ''
 });
+const nameerror = ref('');
+const priceerror = ref('');
+const kiloerror = ref('');
+const numbererror = ref('');
+const fromerror = ref('');
+const toerror = ref('');
+const dateerror = ref('');
+const usererror = ref('');
 const countries = ref([
   'United States', 'Canada', 'United Kingdom', 'Germany', 'France',
   'Australia', 'India', 'China', 'Brazil', 'Mexico'
@@ -236,10 +245,39 @@ const countries = ref([
 const dec = () => { if (newCard.value.number> 1) newCard.value.number--; };
 const inc = () => {newCard.value.number ++; };
 const itemData = ref({}); 
+const validateForm = () => {
+  if (!ItemName.value) {
+      nameerror.value = 'Please enter the item name';
+    return false;
+  }
+  else if (!price.value || price.value <= 0 ) {
+    priceerror.value = 'Please enter the item price,it should be a positive number';
+    return false;
+  }
+  else if (!kilo.value || kilo.value <= 0) {
+    kiloerror.value = 'Please enter the item weight,it should be a positive number ';
+    return false;
+  }
+  else   if (!From.value || /^\d/.test(From.value)) {
+    fromerror.value = 'Please enter from Country & should not start with a number';
+    return false;
+  } else if (!To.value || /^\d/.test(To.value)) {
+    toerror.value = 'Please enter to country & should not start with a number';
+    return false;
+  } else if (!Date.value) {
+    dateerror.value = 'Please enter the date';
+    return false;
+  } else if (!name.value) {
+    nameerror.value = 'Please enter your shipment name';
+    return false;
+  }
+   
+  return true;
+};
 const emitDone = () => {
-  // if (validateForm()) {
+  if (validateForm()) {
     emit('done', newCard.value);
-  // }
+  }
 };
 const next = ()=>{
   displayInfo.value = false;
